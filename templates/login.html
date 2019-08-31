@@ -1,0 +1,32 @@
+{% extends 'master/base.html' %}
+
+{% block 'title' %} Signup {% endblock %}
+
+{% block 'body' %}
+  <div class="container">
+        <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <div class="card signupcard">
+                        {% if messages %}
+
+                                <div class="alert alert-success">
+                                    <ul>
+                                    {% for m in messages %}
+                                        <li> {{m}}</li>
+
+                                    {% endfor %}
+                                        </ul>
+                                     </div>
+                        {% endif %}
+                        <form method="post" action="{% url 'login' %}">
+                                {{form}}
+
+                            {% csrf_token %}
+                            <br/>
+                            <button type="submit" class="btn btn-success">Login</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+  </div>
+{% endblock %}

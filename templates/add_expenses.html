@@ -1,0 +1,30 @@
+{% extends 'master/base.html' %}
+
+{% block 'title' %} Home {% endblock %}
+{% block 'body' %}
+
+ <div class="container">
+    {% include 'partials/all_button.html' %}
+
+  <div class="alert alert-info">
+   <h5>Add Category</h5>
+      {{id}}
+     <form method="post" action="{% url 'expenses_add' %}">
+       {{cform}}
+      {% csrf_token %}
+         <input type="hidden" name="what" value="cat">
+      <br/>
+     <button type="submit" class="btn btn-success" style="float:right;">Save</button>
+     </form>
+  </div>
+   <div class="row">
+    <form method="post" action="{% url 'expenses_add' %}" enctype="multipart/form-data">
+      {{form}}
+       {% csrf_token %}
+        <input type="hidden" name="what" value="expenses">
+     <button type="submit" class="btn btn-primary">Save</button>
+     </form>
+   </div>
+
+ </div>
+{% endblock %}
